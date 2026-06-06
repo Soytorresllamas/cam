@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casa de Apoyo a la Mujer A.C. — León, Guanajuato</title>
+  <meta name="description" content="Organización de la sociedad civil dedicada a acompañar a mujeres que viven situaciones de violencia. Atención psicológica, jurídica y social en León, Guanajuato." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Design tokens ─────────────────────────────────────────── */
+    :root {
+      --purple-deep:  #4C135E;
+      --purple-main:  #702F8A;
+      --purple-mid:   #993A75;
+      --teal:         #66B5A8;
+      --teal-dark:    #4d9088;
+      --magenta:      #C51D71;
+      --cream:        #FFF8F5;
+      --lavender:     #DDD6FF;
+      --white:        #ffffff;
+      --text-dark:    #1a0a22;
+      --text-mid:     #4a3558;
+      --radius-lg:    2rem;
+      --radius-xl:    3rem;
+    }
+
+    /* ── Reset ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Epilogue', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Utility ───────────────────────────────────────────────── */
+    .container { width: 90%; max-width: 1140px; margin: 0 auto; }
+    .section { padding: 5rem 0; }
+    .section--cream  { background: var(--cream); }
+    .section--white  { background: var(--white); }
+    .section--purple { background: var(--purple-deep); color: var(--white); }
+    .section--teal   { background: var(--teal); color: var(--white); }
+    .section--lavender { background: var(--lavender); }
+
+    .badge {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      margin-bottom: .75rem;
+    }
+
+    h1, h2, h3, h4 { line-height: 1.15; font-weight: 800; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
+    h3 { font-size: 1.25rem; font-weight: 700; }
+    p  { font-size: 1.05rem; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .85rem 1.75rem;
+      border-radius: 100px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform .2s, box-shadow .2s, background .2s;
+      text-decoration: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.15); }
+
+    .btn-urgent {
+      background: var(--magenta);
+      color: var(--white);
+    }
+    .btn-primary {
+      background: var(--purple-main);
+      color: var(--white);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,.6);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.1); }
+    .btn-teal {
+      background: var(--teal);
+      color: var(--white);
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--purple-main);
+    }
+
+    /* ── Fixed urgent bar ──────────────────────────────────────── */
+    .urgent-bar {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 1000;
+    }
+    .urgent-bar .btn-urgent {
+      box-shadow: 0 6px 24px rgba(197,29,113,.45);
+      animation: pulse 2.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 6px 24px rgba(197,29,113,.45); }
+      50%       { box-shadow: 0 6px 36px rgba(197,29,113,.7); }
+    }
+
+    /* ── Header / Nav ──────────────────────────────────────────── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(255,248,245,.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(112,47,138,.1);
+      padding: .9rem 0;
+    }
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .logo__text { line-height: 1.2; }
+    .logo__text strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--purple-deep);
+    }
+    .logo__text span {
+      display: block;
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--teal);
+    }
+
+    .nav { display: flex; align-items: center; gap: 1.75rem; }
+    .nav a {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      position: relative;
+      transition: color .2s;
+    }
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 2px;
+      background: var(--teal);
+      transform: scaleX(0);
+      transition: transform .2s;
+    }
+    .nav a:hover { color: var(--purple-main); }
+    .nav a:hover::after { transform: scaleX(1); }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .25rem;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--purple-main);
+      border-radius: 2px;
+      transition: .3s;
+    }
+
+    /* ── Hero ──────────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple-main) 60%, #8b3fa8 100%);
+      color: var(--white);
+      padding: 6rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -4rem; right: -6rem;
+      width: 40rem; height: 40rem;
+      background: radial-gradient(circle, rgba(102,181,168,.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -6rem; left: -4rem;
+      width: 30rem; height: 30rem;
+      background: radial-gradient(circle, rgba(221,214,255,.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero__tag {
+      display: inline-block;
+      background: rgba(102,181,168,.25);
+      color: var(--teal);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .35rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      margin-bottom: 1.25rem;
+      line-height: 1.08;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--teal);
+    }
+    .hero__lead {
+      font-size: 1.15rem;
+      opacity: .9;
+      margin-bottom: 2rem;
+      max-width: 520px;
+    }
+    .hero__ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    /* Hero visual */
+    .hero__visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero__card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      text-align: center;
+      backdrop-filter: blur(6px);
+      max-width: 320px;
+    }
+    .hero__stat {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--teal);
+      line-height: 1;
+    }
+    .hero__stat-label {
+      font-size: 1rem;
+      opacity: .85;
+      margin-top: .5rem;
+    }
+    .hero__divider {
+      width: 2rem;
+      height: 2px;
+      background: rgba(255,255,255,.3);
+      margin: 1.5rem auto;
+    }
+    .hero__quote {
+      font-size: .95rem;
+      font-style: italic;
+      opacity: .8;
+      line-height: 1.5;
+    }
+
+    /* ── Servicios ─────────────────────────────────────────────── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      transition: transform .25s, box-shadow .25s;
+      border: 1px solid rgba(112,47,138,.08);
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(76,19,94,.12);
+    }
+    .service-icon {
+      width: 3.25rem; height: 3.25rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.4rem;
+    }
+    .service-card h3 { margin-bottom: .6rem; color: var(--purple-deep); }
+    .service-card p  { font-size: .95rem; color: var(--text-mid); }
+
+    /* ── Proceso ───────────────────────────────────────────────── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 2rem;
+      left: calc(12.5% + 1.5rem);
+      right: calc(12.5% + 1.5rem);
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--purple-main));
+    }
+    .step { text-align: center; position: relative; }
+    .step__num {
+      width: 4rem; height: 4rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--purple-main));
+      color: var(--white);
+      font-size: 1.25rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .step h3 { font-size: 1rem; margin-bottom: .4rem; color: var(--purple-deep); }
+    .step p  { font-size: .9rem; color: var(--text-mid); }
+
+    /* ── Impacto ───────────────────────────────────────────────── */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .impact-card {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+    }
+    .impact-num {
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      font-weight: 900;
+      color: var(--teal);
+      line-height: 1;
+    }
+    .impact-label {
+      font-size: 1rem;
+      margin-top: .5rem;
+      opacity: .9;
+    }
+
+    /* ── Quiénes somos ─────────────────────────────────────────── */
+    .about__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about__visual {
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, var(--lavender), rgba(102,181,168,.25));
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .value-chip {
+      background: var(--white);
+      border-radius: 100px;
+      padding: .6rem 1.25rem;
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--purple-main);
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      box-shadow: 0 2px 8px rgba(76,19,94,.1);
+    }
+    .value-chip span { color: var(--teal); font-size: 1.1rem; }
+
+    /* ── Súmate ────────────────────────────────────────────────── */
+    .sumate-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .sumate-card {
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .sumate-card--dona {
+      background: var(--purple-deep);
+      color: var(--white);
+    }
+    .sumate-card--vol {
+      background: var(--teal);
+      color: var(--white);
+    }
+    .sumate-card--alianza {
+      background: var(--lavender);
+      color: var(--purple-deep);
+    }
+    .sumate-card__icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .sumate-card h3 { margin-bottom: .75rem; }
+    .sumate-card p  { font-size: .95rem; opacity: .85; margin-bottom: 1.5rem; }
+
+    /* donation amounts */
+    .dona-amounts {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      margin: 1.5rem 0;
+    }
+    .dona-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 100px;
+      padding: .5rem .75rem .5rem 1rem;
+      font-size: .9rem;
+    }
+    .dona-row strong { font-size: 1rem; color: var(--teal); }
+    .dona-row span   { opacity: .8; font-size: .85rem; }
+
+    /* ── Contacto ──────────────────────────────────────────────── */
+    .contact__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .contact-item__icon {
+      width: 2.75rem; height: 2.75rem;
+      border-radius: 50%;
+      background: rgba(102,181,168,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+    .contact-item__text strong {
+      display: block;
+      font-weight: 700;
+      color: var(--purple-deep);
+      margin-bottom: .2rem;
+    }
+    .contact-item__text p { font-size: .95rem; color: var(--text-mid); }
+
+    .urgent-box {
+      background: var(--magenta);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      color: var(--white);
+      text-align: center;
+    }
+    .urgent-box__icon { font-size: 3rem; margin-bottom: 1rem; }
+    .urgent-box h3    { font-size: 1.4rem; margin-bottom: .75rem; }
+    .urgent-box p     { opacity: .9; margin-bottom: 1.5rem; }
+
+    /* ── Footer ────────────────────────────────────────────────── */
+    .footer {
+      background: var(--purple-deep);
+      color: var(--white);
+      padding: 3rem 0 2rem;
+    }
+    .footer__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer__copy { font-size: .9rem; opacity: .7; }
+    .footer__links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer__links a { font-size: .9rem; opacity: .7; transition: opacity .2s; }
+    .footer__links a:hover { opacity: 1; }
+    .footer__tag {
+      font-size: .8rem;
+      opacity: .5;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    /* ── Section intro ─────────────────────────────────────────── */
+    .section-intro { max-width: 640px; }
+    .section-intro h2 { margin-bottom: 1rem; }
+    .section-intro p  { color: var(--text-mid); font-size: 1.05rem; }
+    .section--purple .section-intro p,
+    .section--teal .section-intro p { color: rgba(255,255,255,.8); }
+
+    /* ── Testimonial strip ─────────────────────────────────────── */
+    .testimonial {
+      border-left: 4px solid var(--teal);
+      padding: 1.25rem 1.5rem;
+      background: rgba(102,181,168,.08);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      margin-top: 2rem;
+    }
+    .testimonial p { font-style: italic; color: var(--text-mid); }
+    .testimonial cite { display: block; margin-top: .5rem; font-size: .85rem; font-weight: 700; color: var(--purple-main); }
+
+    /* ── Scroll animations ─────────────────────────────────────── */
+    .will-animate {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .will-animate.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Organic background shapes ─────────────────────────────── */
+    .shape-blob {
+      position: absolute;
+      border-radius: 70% 30% 60% 40% / 50% 60% 40% 50%;
+      opacity: .07;
+      pointer-events: none;
+    }
+
+    /* ── Responsive ────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .services-grid  { grid-template-columns: 1fr 1fr; }
+      .impact-grid    { grid-template-columns: 1fr 1fr; }
+      .process-steps  { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      .sumate-grid    { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+      .hero__inner    { grid-template-columns: 1fr; }
+      .hero__visual   { display: none; }
+      .about__inner   { grid-template-columns: 1fr; }
+      .contact__inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .impact-grid   { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .nav { display: none; }
+      .nav.is-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: var(--cream);
+        padding: 1.5rem 5%;
+        border-top: 1px solid rgba(112,47,138,.1);
+        box-shadow: 0 12px 30px rgba(76,19,94,.1);
+        z-index: 800;
+      }
+      .nav-toggle { display: flex; }
+      .header { position: relative; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fixed urgent button -->
+  <div class="urgent-bar">
+    <a href="#contacto" class="btn btn-urgent">
+      🆘 Necesito ayuda ahora
+    </a>
+  </div>
+
+  <!-- ── HEADER ──────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="container header__inner">
+
+      <!-- Logo -->
+      <a href="#inicio" class="logo">
+        <svg width="44" height="44" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Dove body -->
+          <ellipse cx="54" cy="52" rx="26" ry="18" fill="#702F8A" transform="rotate(-20 54 52)"/>
+          <!-- Wing upper -->
+          <path d="M28 38 Q10 20 30 10 Q50 5 58 30 Z" fill="#4C135E"/>
+          <!-- Head -->
+          <circle cx="74" cy="38" r="12" fill="#702F8A"/>
+          <!-- Tail -->
+          <path d="M32 62 Q18 70 20 58 Q22 50 34 55 Z" fill="#4C135E"/>
+          <!-- Eye -->
+          <circle cx="78" cy="35" r="2.5" fill="#FFF8F5"/>
+          <!-- Branch -->
+          <path d="M82 30 Q90 22 95 18" stroke="#66B5A8" stroke-width="3" stroke-linecap="round"/>
+          <path d="M86 26 Q89 20 92 18" stroke="#66B5A8" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M90 23 Q94 18 97 16" stroke="#66B5A8" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="logo__text">
+          <strong>Casa de Apoyo</strong>
+          <span>a la Mujer A.C.</span>
+        </div>
+      </a>
+
+      <!-- Nav -->
+      <nav class="nav" id="main-nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#quienes-somos">Quiénes somos</a>
+        <a href="#que-hacemos">Qué hacemos</a>
+        <a href="#impacto">Impacto</a>
+        <a href="#sumate">Súmate</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── HERO ───────────────────────────────────────────────────── -->
+  <section class="hero" id="inicio">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <span class="hero__tag">León, Guanajuato · Desde 1996</span>
+        <h1>No estás<br/><em>sola.</em><br/>Caminamos<br/>contigo.</h1>
+        <p class="hero__lead">Atención psicológica, jurídica y social para mujeres que viven o han vivido situaciones de violencia. Un espacio seguro, profesional y sin juicios.</p>
+        <div class="hero__ctas">
+          <a href="#contacto" class="btn btn-urgent">🆘 Necesito ayuda ahora</a>
+          <a href="#que-hacemos" class="btn btn-outline">Conoce nuestros servicios</a>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="hero__card">
+          <div class="hero__stat">+23,000</div>
+          <p class="hero__stat-label">mujeres acompañadas<br/>en más de 28 años</p>
+          <div class="hero__divider"></div>
+          <p class="hero__quote">"La fuerza que necesitas<br/>ya está en ti."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── QUÉ HACEMOS ─────────────────────────────────────────────── -->
+  <section class="section section--white" id="que-hacemos">
+    <div class="container">
+      <div class="section-intro">
+        <span class="badge">Nuestros servicios</span>
+        <h2>Atención integral,<br/>modelo interdisciplinario</h2>
+        <p>Acompañamos a cada mujer con un equipo profesional que integra cinco áreas de atención, diseñadas para acompañar su proceso desde adentro.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background:rgba(102,181,168,.15)">🧠</div>
+          <h3>Psicología</h3>
+          <p>Atención emocional, terapia individual y grupal, valoración de riesgo y contención en crisis.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:rgba(112,47,138,.1)">⚖️</div>
+          <h3>Jurídico</h3>
+          <p>Asesoría y representación legal en materia familiar y penal. El 98% de los casos legales resueltos con éxito.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:rgba(197,29,113,.1)">🤝</div>
+          <h3>Trabajo Social</h3>
+          <p>Planes de seguridad, redes de apoyo y canalización institucional.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:rgba(221,214,255,.6)">🌱</div>
+          <h3>Autonomía Económica</h3>
+          <p>Formación, vinculación laboral y desarrollo de proyectos productivos para recuperar la independencia.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:rgba(102,181,168,.15)">📚</div>
+          <h3>Prevención</h3>
+          <p>Talleres, cursos y acciones comunitarias para construir relaciones libres de violencia.</p>
+        </div>
+        <div class="service-card" style="border:2px solid var(--teal); background:rgba(102,181,168,.06)">
+          <div class="service-icon" style="background:rgba(102,181,168,.2)">🕊️</div>
+          <h3>Guardería Asociada</h3>
+          <p>Contamos con una guardería asociada para que ninguna madre tenga que elegir entre su seguridad y el cuidado de sus hijos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROCESO ─────────────────────────────────────────────────── -->
+  <section class="section section--lavender">
+    <div class="container">
+      <div class="section-intro">
+        <span class="badge" style="color:var(--purple-main)">Cómo funciona</span>
+        <h2>Tu proceso,<br/>a tu ritmo</h2>
+        <p style="color:var(--text-mid)">No te decimos qué hacer: te mostramos tus opciones y te acompañamos en cada paso.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="step">
+          <div class="step__num">1</div>
+          <h3>Te escuchamos</h3>
+          <p>Sin juicios, sin prisa. Tu historia es válida y merece ser escuchada.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <h3>Evaluamos juntas</h3>
+          <p>Identificamos tu situación y necesidades con respeto y profesionalismo.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <h3>Diseñamos un plan</h3>
+          <p>Construimos contigo un camino posible, desde tus tiempos y capacidades.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">4</div>
+          <h3>Te acompañamos</h3>
+          <p>Estamos contigo durante todo el proceso, con presencia y compromiso real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── IMPACTO ─────────────────────────────────────────────────── -->
+  <section class="section section--purple" id="impacto">
+    <div class="container">
+      <div class="section-intro">
+        <span class="badge" style="color:var(--teal)">Nuestro impacto</span>
+        <h2 style="color:var(--white)">Más de 28 años<br/>transformando vidas</h2>
+        <p>Cada número representa una historia, una mujer que encontró su camino hacia una vida libre de violencia.</p>
+      </div>
+
+      <div class="impact-grid">
+        <div class="impact-card">
+          <div class="impact-num">+23,000</div>
+          <p class="impact-label">mujeres atendidas directamente</p>
+        </div>
+        <div class="impact-card">
+          <div class="impact-num">98%</div>
+          <p class="impact-label">de éxito en casos legales</p>
+        </div>
+        <div class="impact-card">
+          <div class="impact-num">+28</div>
+          <p class="impact-label">años de presencia ininterrumpida en Guanajuato</p>
+        </div>
+      </div>
+
+      <blockquote style="text-align:center; margin-top:3rem; font-size:1.25rem; font-style:italic; opacity:.85; max-width:600px; margin-left:auto; margin-right:auto;">
+        "Cuando una mujer encuentra apoyo, el ciclo se rompe. Y cuando una red de mujeres se une, el cambio se vuelve imparable."
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ── QUIÉNES SOMOS ───────────────────────────────────────────── -->
+  <section class="section section--cream" id="quienes-somos">
+    <div class="container about__inner">
+      <div>
+        <span class="badge">Quiénes somos</span>
+        <h2>Un refugio seguro.<br/>Una voz aliada.</h2>
+        <p style="margin: 1rem 0 1.25rem">Casa de Apoyo a la Mujer A.C. nació en 1996 en León, Guanajuato, como un espacio creado desde la empatía, el compromiso y la búsqueda de justicia transformada en acción.</p>
+        <p style="color:var(--text-mid)">Somos sostenidas por profesionistas, voluntarias, pasantes y aliadas que creen en el cambio y trabajan para hacerlo posible. Sabemos que cambiar la historia de una sola mujer cambia también a su familia, su comunidad y la sociedad entera.</p>
+
+        <div class="testimonial">
+          <p>"Gracias a CAM pude tomar decisiones y salir de una situación de violencia que no reconocía como tal."</p>
+          <cite>— Mujer atendida por CAM (nombre reservado)</cite>
+        </div>
+
+        <div style="margin-top:2rem">
+          <a href="#sumate" class="btn btn-primary">Conoce cómo ayudar</a>
+        </div>
+      </div>
+
+      <div class="about__visual">
+        <div class="value-chip"><span>🕊️</span> Dignidad y autonomía</div>
+        <div class="value-chip"><span>⚖️</span> Enfoque de derechos humanos</div>
+        <div class="value-chip"><span>🤝</span> Acompañamiento sin juicios</div>
+        <div class="value-chip"><span>🌿</span> Transformación desde adentro</div>
+        <div class="value-chip"><span>💜</span> Comunidad y solidaridad</div>
+        <div class="value-chip"><span>🔍</span> Transparencia institucional</div>
+        <div style="margin-top:.5rem; padding:1.25rem; background:var(--white); border-radius:var(--radius-lg); text-align:center; box-shadow:0 2px 12px rgba(76,19,94,.08)">
+          <div style="font-size:1.8rem; font-weight:900; color:var(--purple-main)">Donataria Autorizada</div>
+          <div style="font-size:.9rem; color:var(--text-mid); margin-top:.25rem">Recibos deducibles de impuestos ante el SAT</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SÚMATE ──────────────────────────────────────────────────── -->
+  <section class="section section--white" id="sumate">
+    <div class="container">
+      <div class="section-intro">
+        <span class="badge">Súmate al cambio</span>
+        <h2>Tu apoyo<br/>cambia vidas</h2>
+        <p>La transformación social requiere acción colectiva. Hay muchas formas de ser parte de este cambio.</p>
+      </div>
+
+      <div class="sumate-grid">
+
+        <!-- Dona -->
+        <div class="sumate-card sumate-card--dona">
+          <div class="sumate-card__icon">💜</div>
+          <h3>Dona</h3>
+          <p>Tu aportación permite que más mujeres reciban atención profesional y segura.</p>
+          <div class="dona-amounts">
+            <div class="dona-row">
+              <strong>$200</strong>
+              <span>Atención inicial</span>
+            </div>
+            <div class="dona-row">
+              <strong>$500</strong>
+              <span>Sesión psicológica</span>
+            </div>
+            <div class="dona-row">
+              <strong>$1,000</strong>
+              <span>Acompañamiento parcial</span>
+            </div>
+          </div>
+          <a href="#contacto" class="btn btn-teal" style="width:100%; justify-content:center">Donar ahora</a>
+        </div>
+
+        <!-- Voluntariado -->
+        <div class="sumate-card sumate-card--vol">
+          <div class="sumate-card__icon">✋</div>
+          <h3>Voluntariado</h3>
+          <p>Comparte tu tiempo y conocimientos. Buscamos personas comprometidas con la causa que quieran ser agentes de cambio real.</p>
+          <a href="#contacto" class="btn btn-white" style="width:100%; justify-content:center; margin-top:1rem">Quiero ser voluntaria/o</a>
+        </div>
+
+        <!-- Alianzas -->
+        <div class="sumate-card sumate-card--alianza">
+          <div class="sumate-card__icon">🤝</div>
+          <h3>Alianzas</h3>
+          <p>Colabora desde tu empresa, universidad o institución. Tenemos experiencia construyendo alianzas estratégicas de largo plazo con impacto medible.</p>
+          <a href="#contacto" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:1rem">Hablemos de alianza</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACTO ────────────────────────────────────────────────── -->
+  <section class="section section--cream" id="contacto">
+    <div class="container contact__inner">
+
+      <div>
+        <span class="badge">Contacto</span>
+        <h2>Estamos para<br/>escucharte.</h2>
+        <p style="margin:1rem 0 2rem; color:var(--text-mid)">Acércate sin miedo. Todo lo que compartas con nosotras es confidencial.</p>
+
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item__icon">📍</div>
+            <div class="contact-item__text">
+              <strong>Ubicación</strong>
+              <p>León, Guanajuato, México</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item__icon">📞</div>
+            <div class="contact-item__text">
+              <strong>Teléfono</strong>
+              <p>Consulta nuestros números en el sitio oficial</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item__icon">📧</div>
+            <div class="contact-item__text">
+              <strong>Correo electrónico</strong>
+              <p><a href="https://casadeapoyoalamujer.org.mx" style="color:var(--teal); font-weight:600">casadeapoyoalamujer.org.mx</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item__icon">🕐</div>
+            <div class="contact-item__text">
+              <strong>Horario de atención</strong>
+              <p>Lunes a viernes, horario de oficina</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="urgent-box">
+        <div class="urgent-box__icon">🆘</div>
+        <h3>¿Estás en riesgo ahora mismo?</h3>
+        <p>No tienes que esperar. Si tu seguridad está en peligro, contáctanos de inmediato. Estamos aquí para acompañarte.</p>
+        <a href="https://casadeapoyoalamujer.org.mx" class="btn btn-white" style="width:100%; justify-content:center; font-size:1.1rem">
+          Contactar de inmediato
+        </a>
+        <p style="margin-top:1rem; font-size:.85rem; opacity:.75">También puedes llamar al 911 si estás en peligro inmediato.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div style="font-weight:800; font-size:1rem; margin-bottom:.25rem;">Casa de Apoyo a la Mujer A.C.</div>
+          <div class="footer__copy">León, Guanajuato · Desde 1996 · Donataria Autorizada</div>
+        </div>
+        <div class="footer__links">
+          <a href="#inicio">Inicio</a>
+          <a href="#quienes-somos">Quiénes somos</a>
+          <a href="#que-hacemos">Qué hacemos</a>
+          <a href="#impacto">Impacto</a>
+          <a href="#sumate">Súmate</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </div>
+      <div class="footer__tag">
+        La fuerza que necesitas ya está en ti &nbsp;·&nbsp; Caminamos contigo
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => nav.classList.toggle('is-open'));
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('is-open')));
+
+    // Animate numbers on scroll
+    const animateNum = (el) => {
+      const target = parseFloat(el.dataset.target);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const isFloat = String(target).includes('.');
+      const duration = 1800;
+      const start = performance.now();
+      const update = (now) => {
+        const t = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 3);
+        const val = target * eased;
+        el.textContent = prefix + (isFloat ? val.toFixed(0) : Math.round(val).toLocaleString('es-MX')) + suffix;
+        if (t < 1) requestAnimationFrame(update);
+      };
+      requestAnimationFrame(update);
+    };
+
+    // Intersection observer for fade-in — CSS class-based so elements are always visible without JS
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          const numEl = e.target.querySelector('[data-target]');
+          if (numEl) animateNum(numEl);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.service-card, .step, .impact-card, .sumate-card, .value-chip').forEach(el => {
+      el.classList.add('will-animate');
+      observer.observe(el);
+    });
+
+    // Stagger cards
+    document.querySelectorAll('.services-grid .service-card, .sumate-grid .sumate-card, .process-steps .step').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 80}ms`;
+    });
+  </script>
+
+</body>
+</html>
