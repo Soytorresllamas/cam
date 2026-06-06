@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <!-- Iconify — Phosphor Icons via CDN -->
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
   <style>
     /* ── Design tokens ─────────────────────────────────────────── */
     :root {
@@ -725,6 +727,15 @@
       pointer-events: none;
     }
 
+    /* ── Iconify icon sizes ─────────────────────────────────────── */
+    iconify-icon { display: inline-flex; }
+    .service-icon iconify-icon { font-size: 1.65rem; }
+    .value-chip iconify-icon   { font-size: 1.05rem; color: var(--teal); flex-shrink: 0; }
+    .sumate-card__icon iconify-icon { font-size: 2.4rem; }
+    .contact-item__icon iconify-icon { font-size: 1.3rem; }
+    .urgent-box__icon iconify-icon { font-size: 3rem; }
+    .btn iconify-icon { font-size: 1rem; flex-shrink: 0; }
+
     /* ── Accessibility ──────────────────────────────────────────── */
     .skip-link {
       position: absolute;
@@ -827,7 +838,7 @@
   <!-- Fixed urgent button -->
   <div class="urgent-bar">
     <a href="#contacto" class="btn btn-urgent">
-      🆘 Necesito ayuda ahora
+      <iconify-icon icon="ph:warning-circle-fill"></iconify-icon> Necesito ayuda ahora
     </a>
   </div>
 
@@ -894,7 +905,7 @@
         <h1>No estás<br/><em>sola.</em><br/>Caminamos<br/>contigo.</h1>
         <p class="hero__lead">Atención psicológica, jurídica y social para mujeres que viven o han vivido situaciones de violencia. Un espacio seguro, profesional y sin juicios.</p>
         <div class="hero__ctas">
-          <a href="#contacto" class="btn btn-urgent">🆘 Necesito ayuda ahora</a>
+          <a href="#contacto" class="btn btn-urgent"><iconify-icon icon="ph:warning-circle-fill"></iconify-icon> Necesito ayuda ahora</a>
           <a href="#que-hacemos" class="btn btn-outline">Conoce nuestros servicios</a>
         </div>
       </div>
@@ -922,32 +933,32 @@
 
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon" style="background:rgba(102,181,168,.15)">🧠</div>
+          <div class="service-icon" style="background:rgba(102,181,168,.15); color:var(--teal-dark)"><iconify-icon icon="ph:brain-bold"></iconify-icon></div>
           <h3>Psicología</h3>
           <p>Atención emocional, terapia individual y grupal, valoración de riesgo y contención en crisis.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon" style="background:rgba(112,47,138,.1)">⚖️</div>
+          <div class="service-icon" style="background:rgba(112,47,138,.1); color:var(--purple-main)"><iconify-icon icon="ph:scales-bold"></iconify-icon></div>
           <h3>Jurídico</h3>
           <p>Asesoría y representación legal en materia familiar y penal. El 98% de los casos legales resueltos con éxito.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon" style="background:rgba(197,29,113,.1)">🤝</div>
+          <div class="service-icon" style="background:rgba(197,29,113,.1); color:var(--magenta)"><iconify-icon icon="ph:handshake-bold"></iconify-icon></div>
           <h3>Trabajo Social</h3>
           <p>Planes de seguridad, redes de apoyo y canalización institucional.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon" style="background:rgba(221,214,255,.6)">🌱</div>
+          <div class="service-icon" style="background:rgba(221,214,255,.6); color:var(--purple-mid)"><iconify-icon icon="ph:plant-bold"></iconify-icon></div>
           <h3>Autonomía Económica</h3>
           <p>Formación, vinculación laboral y desarrollo de proyectos productivos para recuperar la independencia.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon" style="background:rgba(102,181,168,.15)">📚</div>
+          <div class="service-icon" style="background:rgba(102,181,168,.15); color:var(--teal-dark)"><iconify-icon icon="ph:books-bold"></iconify-icon></div>
           <h3>Prevención</h3>
           <p>Talleres, cursos y acciones comunitarias para construir relaciones libres de violencia.</p>
         </div>
         <div class="service-card" style="border:2px solid var(--teal); background:rgba(102,181,168,.06)">
-          <div class="service-icon" style="background:rgba(102,181,168,.2)">🕊️</div>
+          <div class="service-icon" style="background:rgba(102,181,168,.2); color:var(--teal-dark)"><iconify-icon icon="ph:baby-bold"></iconify-icon></div>
           <h3>Guardería Asociada</h3>
           <p>Contamos con una guardería asociada para que ninguna madre tenga que elegir entre su seguridad y el cuidado de sus hijos.</p>
         </div>
@@ -1156,12 +1167,12 @@
           <figcaption>Foto: <a href="https://unsplash.com/@melanie_kanzler?utm_source=cam_site&utm_medium=referral" target="_blank" rel="noopener">Melanie Kanzler</a> / Unsplash</figcaption>
         </figure>
         <div style="display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.5rem;">
-          <div class="value-chip"><span>🕊️</span> Dignidad y autonomía</div>
-          <div class="value-chip"><span>⚖️</span> Derechos humanos</div>
-          <div class="value-chip"><span>🤝</span> Sin juicios</div>
-          <div class="value-chip"><span>🌿</span> Transformación</div>
-          <div class="value-chip"><span>💜</span> Comunidad</div>
-          <div class="value-chip"><span>🔍</span> Transparencia</div>
+          <div class="value-chip"><iconify-icon icon="ph:bird-bold"></iconify-icon> Dignidad y autonomía</div>
+          <div class="value-chip"><iconify-icon icon="ph:scales-bold"></iconify-icon> Derechos humanos</div>
+          <div class="value-chip"><iconify-icon icon="ph:handshake-bold"></iconify-icon> Sin juicios</div>
+          <div class="value-chip"><iconify-icon icon="ph:leaf-bold"></iconify-icon> Transformación</div>
+          <div class="value-chip"><iconify-icon icon="ph:heart-bold"></iconify-icon> Comunidad</div>
+          <div class="value-chip"><iconify-icon icon="ph:magnifying-glass-bold"></iconify-icon> Transparencia</div>
         </div>
         <div style="margin-top:1.25rem; padding:1.25rem; background:var(--lavender); border-radius:var(--radius-lg); text-align:center;">
           <div style="font-size:1.4rem; font-weight:900; color:var(--purple-main)">Donataria Autorizada</div>
@@ -1196,7 +1207,7 @@
 
         <!-- Dona -->
         <div class="sumate-card sumate-card--dona">
-          <div class="sumate-card__icon">💜</div>
+          <div class="sumate-card__icon"><iconify-icon icon="ph:heart-fill"></iconify-icon></div>
           <h3>Dona</h3>
           <p>Tu aportación permite que más mujeres reciban atención profesional y segura.</p>
           <div class="dona-amounts">
@@ -1218,7 +1229,7 @@
 
         <!-- Voluntariado -->
         <div class="sumate-card sumate-card--vol">
-          <div class="sumate-card__icon">✋</div>
+          <div class="sumate-card__icon"><iconify-icon icon="ph:hands-clapping-fill"></iconify-icon></div>
           <h3>Voluntariado</h3>
           <p>Comparte tu tiempo y conocimientos. Buscamos personas comprometidas con la causa que quieran ser agentes de cambio real.</p>
           <a href="#contacto" class="btn btn-white" style="width:100%; justify-content:center; margin-top:1rem">Quiero ser voluntaria/o</a>
@@ -1226,7 +1237,7 @@
 
         <!-- Alianzas -->
         <div class="sumate-card sumate-card--alianza">
-          <div class="sumate-card__icon">🤝</div>
+          <div class="sumate-card__icon"><iconify-icon icon="ph:handshake-fill"></iconify-icon></div>
           <h3>Alianzas</h3>
           <p>Colabora desde tu empresa, universidad o institución. Tenemos experiencia construyendo alianzas estratégicas de largo plazo con impacto medible.</p>
           <a href="#contacto" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:1rem">Hablemos de alianza</a>
@@ -1247,28 +1258,28 @@
 
         <div class="contact-info">
           <div class="contact-item">
-            <div class="contact-item__icon">📍</div>
+            <div class="contact-item__icon"><iconify-icon icon="ph:map-pin-bold"></iconify-icon></div>
             <div class="contact-item__text">
               <strong>Ubicación</strong>
               <p>León, Guanajuato, México</p>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-item__icon">📞</div>
+            <div class="contact-item__icon"><iconify-icon icon="ph:phone-bold"></iconify-icon></div>
             <div class="contact-item__text">
               <strong>Teléfono</strong>
               <p>Consulta nuestros números en el sitio oficial</p>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-item__icon">📧</div>
+            <div class="contact-item__icon"><iconify-icon icon="ph:envelope-bold"></iconify-icon></div>
             <div class="contact-item__text">
               <strong>Correo electrónico</strong>
               <p><a href="https://casadeapoyoalamujer.org.mx" style="color:var(--teal); font-weight:600">casadeapoyoalamujer.org.mx</a></p>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-item__icon">🕐</div>
+            <div class="contact-item__icon"><iconify-icon icon="ph:clock-bold"></iconify-icon></div>
             <div class="contact-item__text">
               <strong>Horario de atención</strong>
               <p>Lunes a viernes, horario de oficina</p>
@@ -1278,7 +1289,7 @@
       </div>
 
       <div class="urgent-box">
-        <div class="urgent-box__icon">🆘</div>
+        <div class="urgent-box__icon"><iconify-icon icon="ph:first-aid-kit-fill"></iconify-icon></div>
         <h3>¿Estás en riesgo ahora mismo?</h3>
         <p>No tienes que esperar. Si tu seguridad está en peligro, contáctanos de inmediato. Estamos aquí para acompañarte.</p>
         <a href="https://casadeapoyoalamujer.org.mx" class="btn btn-white" style="width:100%; justify-content:center; font-size:1.1rem">
