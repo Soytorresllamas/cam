@@ -552,6 +552,95 @@
     .testimonial p { font-style: italic; color: var(--text-mid); }
     .testimonial cite { display: block; margin-top: .5rem; font-size: .85rem; font-weight: 700; color: var(--purple-main); }
 
+    /* ── Cutout cards ────────────────────────────────────────────── */
+    .cutout-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+      padding-bottom: 3rem;
+    }
+    .cutout-card {
+      position: relative;
+      overflow: visible;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .cutout-card__bg {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-xl);
+      z-index: 0;
+    }
+    .cutout-card--purple .cutout-card__bg { background: var(--purple-deep); }
+    .cutout-card--teal   .cutout-card__bg { background: var(--teal); }
+    .cutout-card--mid    .cutout-card__bg { background: var(--purple-mid); }
+
+    .cutout-card__shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: .18;
+      z-index: 1;
+    }
+    .cutout-card--purple .cutout-card__shape { background: var(--teal); width:120px; height:120px; top:-24px; right:60px; }
+    .cutout-card--teal   .cutout-card__shape { background: var(--lavender); width:100px; height:100px; top:-20px; left:20px; }
+    .cutout-card--mid    .cutout-card__shape { background: var(--cream); width:90px; height:90px; bottom:60px; left:-18px; }
+
+    .cutout-card__person {
+      position: absolute;
+      bottom: 0;
+      height: 108%;
+      z-index: 3;
+      pointer-events: none;
+      filter: drop-shadow(4px 0 12px rgba(0,0,0,.2));
+    }
+    .cutout-card--purple .cutout-card__person { right: -8px; }
+    .cutout-card--teal   .cutout-card__person { right: -8px; }
+    .cutout-card--mid    .cutout-card__person { right: -4px; height: 115%; }
+
+    .cutout-card__content {
+      position: relative;
+      z-index: 4;
+      padding: 1.75rem 1.5rem 1.75rem;
+      max-width: 60%;
+      color: var(--white);
+    }
+    .cutout-card__tag {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: .7;
+      margin-bottom: .5rem;
+    }
+    .cutout-card__content h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: .6rem;
+    }
+    .cutout-card__content p {
+      font-size: .85rem;
+      opacity: .85;
+      line-height: 1.5;
+    }
+    .cutout-card__credit {
+      position: absolute;
+      bottom: .5rem;
+      left: 1rem;
+      font-size: .6rem;
+      color: rgba(255,255,255,.4);
+      z-index: 5;
+    }
+    .cutout-card__credit a { color: rgba(255,255,255,.5); }
+
+    @media (max-width: 900px) {
+      .cutout-grid { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; }
+    }
+
     /* ── Photo elements ─────────────────────────────────────────── */
     .about__photo {
       border-radius: var(--radius-xl);
@@ -787,6 +876,75 @@
           <h3>Guardería Asociada</h3>
           <p>Contamos con una guardería asociada para que ninguna madre tenga que elegir entre su seguridad y el cuidado de sus hijos.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CUTOUT CARDS ───────────────────────────────────────────── -->
+  <section class="section section--lavender" style="padding-bottom:6rem;">
+    <div class="container">
+      <div class="section-intro">
+        <span class="badge" style="color:var(--purple-main)">Áreas de atención</span>
+        <h2>Tu proceso,<br/>acompañado</h2>
+        <p style="color:var(--text-mid)">Cada mujer que llega recibe atención personalizada en las áreas que su situación requiere.</p>
+      </div>
+
+      <div class="cutout-grid">
+
+        <!-- Card 1: Psicología -->
+        <div class="cutout-card cutout-card--purple">
+          <div class="cutout-card__bg"></div>
+          <div class="cutout-card__shape"></div>
+          <img
+            class="cutout-card__person"
+            src="images/mujer1.png"
+            alt="Mujer sonriente representando atención psicológica"
+            loading="lazy"
+          />
+          <div class="cutout-card__content">
+            <span class="cutout-card__tag">Área</span>
+            <h3>Atención Psicológica</h3>
+            <p>Terapia individual y grupal, contención emocional y valoración de riesgo.</p>
+          </div>
+          <span class="cutout-card__credit">Foto: <a href="https://unsplash.com/@jakenackos?utm_source=cam_site&utm_medium=referral" target="_blank" rel="noopener">Jake Nackos</a> / Unsplash</span>
+        </div>
+
+        <!-- Card 2: Jurídico -->
+        <div class="cutout-card cutout-card--teal">
+          <div class="cutout-card__bg"></div>
+          <div class="cutout-card__shape"></div>
+          <img
+            class="cutout-card__person"
+            src="images/mujer2.png"
+            alt="Profesional representando área jurídica"
+            loading="lazy"
+          />
+          <div class="cutout-card__content">
+            <span class="cutout-card__tag">Área</span>
+            <h3>Asesoría Jurídica</h3>
+            <p>Representación legal en materia familiar y penal. 98% de éxito en casos.</p>
+          </div>
+          <span class="cutout-card__credit">Foto: <a href="https://unsplash.com/@palmariannika?utm_source=cam_site&utm_medium=referral" target="_blank" rel="noopener">Annika Palmari</a> / Unsplash</span>
+        </div>
+
+        <!-- Card 3: Autonomía Económica -->
+        <div class="cutout-card cutout-card--mid">
+          <div class="cutout-card__bg"></div>
+          <div class="cutout-card__shape"></div>
+          <img
+            class="cutout-card__person"
+            src="images/mujer3.png"
+            alt="Mujer segura representando autonomía económica"
+            loading="lazy"
+          />
+          <div class="cutout-card__content">
+            <span class="cutout-card__tag">Área</span>
+            <h3>Autonomía Económica</h3>
+            <p>Formación, vinculación laboral y proyectos productivos para recuperar la independencia.</p>
+          </div>
+          <span class="cutout-card__credit">Foto: <a href="https://unsplash.com/@antonkwibowo?utm_source=cam_site&utm_medium=referral" target="_blank" rel="noopener">Anton K Wibowo</a> / Unsplash</span>
+        </div>
+
       </div>
     </div>
   </section>
