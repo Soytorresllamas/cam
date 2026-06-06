@@ -346,37 +346,80 @@
     /* ── Proceso ───────────────────────────────────────────────── */
     .process-steps {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      gap: 1rem;
       margin-top: 3rem;
-      position: relative;
+      align-items: center;
     }
-    .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 2rem;
-      left: calc(12.5% + 1.5rem);
-      right: calc(12.5% + 1.5rem);
-      height: 2px;
-      background: linear-gradient(90deg, var(--teal), var(--purple-main));
-    }
-    .step { text-align: center; position: relative; }
-    .step__num {
-      width: 4rem; height: 4rem;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal), var(--purple-main));
-      color: var(--white);
-      font-size: 1.25rem;
-      font-weight: 800;
+    .step-connector {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1rem;
-      position: relative;
-      z-index: 1;
+      color: var(--teal);
+      opacity: .45;
+      font-size: 1.3rem;
+      padding: 0 .25rem;
     }
-    .step h3 { font-size: 1rem; margin-bottom: .4rem; color: var(--purple-deep); }
-    .step p  { font-size: .9rem; color: var(--text-mid); }
+    .step { position: relative; align-self: stretch; }
+    .step__card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 28px rgba(76,19,94,.09), 0 1px 4px rgba(76,19,94,.04);
+      border: 1px solid rgba(76,19,94,.07);
+      border-top: 3px solid var(--teal);
+      padding: 1.75rem 1.25rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    .step__deco-num {
+      position: absolute;
+      top: -1rem;
+      right: 0.2rem;
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--purple-deep);
+      opacity: 0.055;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.05em;
+    }
+    .step__icon-wrap {
+      width: 3rem; height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.75rem;
+    }
+    .step__icon-wrap iconify-icon { font-size: 1.35rem; }
+    .step__badge {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      padding: .2rem .65rem;
+      border-radius: 100px;
+      margin-bottom: .45rem;
+    }
+    .step--teal  .step__card      { border-top-color: var(--teal); }
+    .step--teal  .step__icon-wrap { background: rgba(102,181,168,.15); color: var(--teal-dark); }
+    .step--teal  .step__badge     { background: rgba(102,181,168,.15); color: var(--teal-dark); }
+    .step--purple .step__card      { border-top-color: var(--purple-main); }
+    .step--purple .step__icon-wrap { background: rgba(112,47,138,.1); color: var(--purple-main); }
+    .step--purple .step__badge     { background: rgba(112,47,138,.1); color: var(--purple-main); }
+    .step--mid   .step__card      { border-top-color: var(--purple-mid); }
+    .step--mid   .step__icon-wrap { background: rgba(153,58,117,.1); color: var(--purple-mid); }
+    .step--mid   .step__badge     { background: rgba(153,58,117,.1); color: var(--purple-mid); }
+    .step--deep  .step__card      { border-top-color: var(--purple-deep); }
+    .step--deep  .step__icon-wrap { background: rgba(76,19,94,.1); color: var(--purple-deep); }
+    .step--deep  .step__badge     { background: rgba(76,19,94,.1); color: var(--purple-deep); }
+    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; color: var(--purple-deep); }
+    .step p  { font-size: .875rem; color: var(--text-mid); line-height: 1.55; margin: 0; }
 
     /* ── Impacto ───────────────────────────────────────────────── */
     .impact-grid {
@@ -816,7 +859,7 @@
       .services-grid  { grid-template-columns: 1fr 1fr; }
       .impact-grid    { grid-template-columns: 1fr 1fr; }
       .process-steps  { grid-template-columns: 1fr 1fr; }
-      .process-steps::before { display: none; }
+      .step-connector { display: none; }
       .sumate-grid    { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
       .hero__inner    { grid-template-columns: 1fr; }
       .hero__visual   { display: none; }
@@ -828,6 +871,7 @@
       .services-grid { grid-template-columns: 1fr; }
       .impact-grid   { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: 1fr; }
+      .step-connector { display: none; }
       .nav { display: none; }
       .nav.is-open {
         display: flex;
@@ -1056,25 +1100,44 @@
       </div>
 
       <div class="process-steps">
-        <div class="step">
-          <div class="step__num">1</div>
-          <h3>Te escuchamos</h3>
-          <p>Sin juicios, sin prisa. Tu historia es válida y merece ser escuchada.</p>
+        <div class="step step--teal will-animate">
+          <div class="step__card">
+            <span class="step__deco-num" aria-hidden="true">01</span>
+            <div class="step__icon-wrap"><iconify-icon icon="ph:ear-bold"></iconify-icon></div>
+            <span class="step__badge">Paso 1</span>
+            <h3>Te escuchamos</h3>
+            <p>Sin juicios, sin prisa. Tu historia es válida y merece ser escuchada.</p>
+          </div>
         </div>
-        <div class="step">
-          <div class="step__num">2</div>
-          <h3>Evaluamos juntas</h3>
-          <p>Identificamos tu situación y necesidades con respeto y profesionalismo.</p>
+        <div class="step-connector" aria-hidden="true"><iconify-icon icon="ph:arrow-right-bold"></iconify-icon></div>
+        <div class="step step--purple will-animate">
+          <div class="step__card">
+            <span class="step__deco-num" aria-hidden="true">02</span>
+            <div class="step__icon-wrap"><iconify-icon icon="ph:clipboard-text-bold"></iconify-icon></div>
+            <span class="step__badge">Paso 2</span>
+            <h3>Evaluamos juntas</h3>
+            <p>Identificamos tu situación y necesidades con respeto y profesionalismo.</p>
+          </div>
         </div>
-        <div class="step">
-          <div class="step__num">3</div>
-          <h3>Diseñamos un plan</h3>
-          <p>Construimos contigo un camino posible, desde tus tiempos y capacidades.</p>
+        <div class="step-connector" aria-hidden="true"><iconify-icon icon="ph:arrow-right-bold"></iconify-icon></div>
+        <div class="step step--mid will-animate">
+          <div class="step__card">
+            <span class="step__deco-num" aria-hidden="true">03</span>
+            <div class="step__icon-wrap"><iconify-icon icon="ph:compass-bold"></iconify-icon></div>
+            <span class="step__badge">Paso 3</span>
+            <h3>Diseñamos un plan</h3>
+            <p>Construimos contigo un camino posible, desde tus tiempos y capacidades.</p>
+          </div>
         </div>
-        <div class="step">
-          <div class="step__num">4</div>
-          <h3>Te acompañamos</h3>
-          <p>Estamos contigo durante todo el proceso, con presencia y compromiso real.</p>
+        <div class="step-connector" aria-hidden="true"><iconify-icon icon="ph:arrow-right-bold"></iconify-icon></div>
+        <div class="step step--deep will-animate">
+          <div class="step__card">
+            <span class="step__deco-num" aria-hidden="true">04</span>
+            <div class="step__icon-wrap"><iconify-icon icon="ph:hand-heart-bold"></iconify-icon></div>
+            <span class="step__badge">Paso 4</span>
+            <h3>Te acompañamos</h3>
+            <p>Estamos contigo durante todo el proceso, con presencia y compromiso real.</p>
+          </div>
         </div>
       </div>
     </div>
