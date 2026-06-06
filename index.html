@@ -59,13 +59,13 @@
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--teal-dark);
-      margin-bottom: .75rem;
+      margin-bottom: 1rem;
     }
 
-    h1, h2, h3, h4 { line-height: 1.15; font-weight: 800; }
-    h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
+    h1, h2, h3, h4 { line-height: 1.15; font-weight: 800; text-wrap: balance; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); letter-spacing: -.025em; }
     h3 { font-size: 1.25rem; font-weight: 700; }
-    p  { font-size: 1.05rem; }
+    p  { font-size: 1.05rem; text-wrap: pretty; }
 
     .btn {
       display: inline-flex;
@@ -877,6 +877,45 @@
       overflow: hidden;
     }
 
+    /* ── Testimonial firma (sección de impacto editorial) ──────── */
+    .testimonial-feature { text-align: center; }
+    .testimonial-feature__inner { max-width: 680px; margin: 0 auto; }
+    .testimonial-feature__mark {
+      display: block;
+      font-size: 7rem;
+      line-height: .6;
+      color: var(--teal);
+      font-family: Georgia, 'Times New Roman', serif;
+      margin-bottom: 1.5rem;
+      opacity: .7;
+      user-select: none;
+      pointer-events: none;
+    }
+    .testimonial-feature__quote {
+      font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--purple-deep);
+      margin-bottom: 1.5rem;
+      text-wrap: pretty;
+    }
+    .testimonial-feature__cite {
+      display: block;
+      font-style: normal;
+      font-size: .875rem;
+      font-weight: 700;
+      color: var(--purple-main);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .testimonial-feature__cite span {
+      font-weight: 400;
+      opacity: .6;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
     /* ── Responsive ────────────────────────────────────────────── */
     @media (max-width: 900px) {
       .services-grid  { grid-template-columns: 1fr 1fr; }
@@ -998,8 +1037,7 @@
     <div class="container">
       <div class="section-intro">
         <span class="badge">Nuestros servicios</span>
-        <svg class="deco-curve" width="72" height="28" viewBox="0 0 72 28" fill="none" aria-hidden="true"><path d="M4 22 C16 6 28 26 44 14 C54 6 64 20 70 12" stroke-width="2.5" stroke-linecap="round"/></svg>
-        <h2>Atención integral,<br/>modelo interdisciplinario</h2>
+<h2>Atención integral,<br/>modelo interdisciplinario</h2>
         <p>Acompañamos a cada mujer con un equipo profesional que integra cinco áreas de atención, diseñadas para acompañar su proceso desde adentro.</p>
       </div>
 
@@ -1043,8 +1081,7 @@
     <div class="container">
       <div class="section-intro">
         <span class="badge" style="color:var(--purple-main)">Áreas de atención</span>
-        <svg class="deco-curve" width="72" height="28" viewBox="0 0 72 28" fill="none" aria-hidden="true"><path d="M4 22 C16 6 28 26 44 14 C54 6 64 20 70 12" stroke-width="2.5" stroke-linecap="round"/></svg>
-        <h2>Tres áreas.<br/>Un camino.</h2>
+<h2>Tres áreas.<br/>Un camino.</h2>
         <p style="color:var(--text-mid)">Cada mujer que llega recibe atención personalizada en las áreas que su situación requiere.</p>
       </div>
 
@@ -1120,8 +1157,7 @@
     <div class="container">
       <div class="section-intro">
         <span class="badge" style="color:var(--purple-main)">Cómo funciona</span>
-        <svg class="deco-curve" width="72" height="28" viewBox="0 0 72 28" fill="none" aria-hidden="true"><path d="M4 22 C16 6 28 26 44 14 C54 6 64 20 70 12" stroke-width="2.5" stroke-linecap="round"/></svg>
-        <h2>Tu proceso,<br/>a tu ritmo</h2>
+<h2>Tu proceso,<br/>a tu ritmo</h2>
         <p style="color:var(--text-mid)">No te decimos qué hacer: te mostramos tus opciones y te acompañamos en cada paso.</p>
       </div>
 
@@ -1187,8 +1223,7 @@
     <div class="container" style="position:relative;z-index:1;">
       <div class="section-intro">
         <span class="badge" style="color:var(--teal)">Nuestro impacto</span>
-        <svg class="deco-curve" width="72" height="28" viewBox="0 0 72 28" fill="none" aria-hidden="true"><path d="M4 22 C16 6 28 26 44 14 C54 6 64 20 70 12" stroke-width="2.5" stroke-linecap="round"/></svg>
-        <h2 style="color:var(--white)">Más de 28 años<br/>transformando vidas</h2>
+<h2 style="color:var(--white)">Más de 28 años<br/>transformando vidas</h2>
         <p>Cada número representa una historia, una mujer que encontró su camino hacia una vida libre de violencia.</p>
       </div>
 
@@ -1207,9 +1242,17 @@
         </div>
       </div>
 
-      <blockquote style="text-align:center; margin-top:3rem; font-size:1.25rem; font-style:italic; opacity:.85; max-width:600px; margin-left:auto; margin-right:auto;">
-        "Cuando una mujer encuentra apoyo, el ciclo se rompe. Y cuando una red de mujeres se une, el cambio se vuelve imparable."
-      </blockquote>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIAL FIRMA ─────────────────────────────────────────── -->
+  <section class="section section--lavender testimonial-feature">
+    <div class="container">
+      <div class="testimonial-feature__inner will-animate">
+        <span class="testimonial-feature__mark" aria-hidden="true">"</span>
+        <p class="testimonial-feature__quote">Gracias a CAM pude tomar decisiones y salir de una situación de violencia que no reconocía como tal.</p>
+        <cite class="testimonial-feature__cite">Mujer atendida por CAM <span>(nombre reservado)</span></cite>
+      </div>
     </div>
   </section>
 
@@ -1233,15 +1276,9 @@
     <div class="container about__inner">
       <div>
         <span class="badge">Quiénes somos</span>
-        <svg class="deco-curve" width="72" height="28" viewBox="0 0 72 28" fill="none" aria-hidden="true"><path d="M4 22 C16 6 28 26 44 14 C54 6 64 20 70 12" stroke-width="2.5" stroke-linecap="round"/></svg>
-        <h2>Un refugio seguro.<br/>Una voz aliada.</h2>
+<h2>Un refugio seguro.<br/>Una voz aliada.</h2>
         <p style="margin: 1rem 0 1.25rem">Casa de Apoyo a la Mujer A.C. nació en 1996 en León, Guanajuato, como un espacio creado desde la empatía, el compromiso y la búsqueda de justicia transformada en acción.</p>
         <p style="color:var(--text-mid)">Somos sostenidas por profesionistas, voluntarias, pasantes y aliadas que creen en el cambio y trabajan para hacerlo posible. Sabemos que cambiar la historia de una sola mujer cambia también a su familia, su comunidad y la sociedad entera.</p>
-
-        <div class="testimonial">
-          <p>"Gracias a CAM pude tomar decisiones y salir de una situación de violencia que no reconocía como tal."</p>
-          <cite>— Mujer atendida por CAM (nombre reservado)</cite>
-        </div>
 
         <div style="margin-top:2rem">
           <a href="sumate.html" class="btn btn-primary">Conoce cómo ayudar</a>
@@ -1274,7 +1311,7 @@
   </section>
 
   <!-- ── CONTACTO ────────────────────────────────────────────────── -->
-  <section class="section section--cream" id="contacto">
+  <section class="section section--white" id="contacto">
     <div class="container contact__inner">
 
       <div>
