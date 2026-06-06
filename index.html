@@ -194,7 +194,9 @@
 
     /* ── Hero ──────────────────────────────────────────────────── */
     .hero {
-      background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple-main) 60%, #8b3fa8 100%);
+      background:
+        linear-gradient(135deg, rgba(76,19,94,.92) 0%, rgba(112,47,138,.87) 55%, rgba(139,63,168,.82) 100%),
+        url('https://images.unsplash.com/photo-1551845728-6820a30c64e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600') center 40% / cover no-repeat;
       color: var(--white);
       padding: 6rem 0 5rem;
       position: relative;
@@ -550,6 +552,71 @@
     .testimonial p { font-style: italic; color: var(--text-mid); }
     .testimonial cite { display: block; margin-top: .5rem; font-size: .85rem; font-weight: 700; color: var(--purple-main); }
 
+    /* ── Photo elements ─────────────────────────────────────────── */
+    .about__photo {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      box-shadow: 0 24px 60px rgba(76,19,94,.18);
+    }
+    .about__photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about__photo figcaption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: .5rem .9rem;
+      background: rgba(0,0,0,.4);
+      color: rgba(255,255,255,.7);
+      font-size: .7rem;
+      text-align: right;
+    }
+    .about__photo figcaption a { color: rgba(255,255,255,.8); }
+
+    .photo-strip {
+      width: 100%;
+      height: 320px;
+      position: relative;
+      overflow: hidden;
+    }
+    .photo-strip img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      display: block;
+    }
+    .photo-strip__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(76,19,94,.7) 0%, rgba(102,181,168,.4) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .photo-strip__text {
+      text-align: center;
+      color: var(--white);
+      max-width: 600px;
+    }
+    .photo-strip__text p {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.4;
+      text-shadow: 0 2px 8px rgba(0,0,0,.3);
+    }
+    .photo-strip figcaption {
+      position: absolute;
+      bottom: .5rem; right: .75rem;
+      color: rgba(255,255,255,.5);
+      font-size: .65rem;
+    }
+    .photo-strip figcaption a { color: rgba(255,255,255,.6); }
+
     /* ── Scroll animations ─────────────────────────────────────── */
     .will-animate {
       opacity: 0;
@@ -580,6 +647,7 @@
       .hero__visual   { display: none; }
       .about__inner   { grid-template-columns: 1fr; }
       .contact__inner { grid-template-columns: 1fr; }
+      #sumate .container > div:first-child { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 640px) {
       .services-grid { grid-template-columns: 1fr; }
@@ -787,6 +855,21 @@
     </div>
   </section>
 
+  <!-- ── PHOTO STRIP ───────────────────────────────────────────────── -->
+  <figure class="photo-strip">
+    <img
+      src="https://images.unsplash.com/photo-1522543558187-768b6df7c25c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600"
+      alt="Mujeres tomadas de la cintura caminando juntas — solidaridad y comunidad"
+      loading="lazy"
+    />
+    <div class="photo-strip__overlay">
+      <div class="photo-strip__text">
+        <p>"Cuando una mujer encuentra apoyo, el ciclo se rompe.<br/>Y cuando una red de mujeres se une, el cambio se vuelve imparable."</p>
+      </div>
+    </div>
+    <figcaption>Foto: <a href="https://unsplash.com/@voneciacarswell?utm_source=cam_site&utm_medium=referral" target="_blank" rel="noopener">Vonecia Carswell</a> / Unsplash</figcaption>
+  </figure>
+
   <!-- ── QUIÉNES SOMOS ───────────────────────────────────────────── -->
   <section class="section section--cream" id="quienes-somos">
     <div class="container about__inner">
@@ -806,15 +889,25 @@
         </div>
       </div>
 
-      <div class="about__visual">
-        <div class="value-chip"><span>🕊️</span> Dignidad y autonomía</div>
-        <div class="value-chip"><span>⚖️</span> Enfoque de derechos humanos</div>
-        <div class="value-chip"><span>🤝</span> Acompañamiento sin juicios</div>
-        <div class="value-chip"><span>🌿</span> Transformación desde adentro</div>
-        <div class="value-chip"><span>💜</span> Comunidad y solidaridad</div>
-        <div class="value-chip"><span>🔍</span> Transparencia institucional</div>
-        <div style="margin-top:.5rem; padding:1.25rem; background:var(--white); border-radius:var(--radius-lg); text-align:center; box-shadow:0 2px 12px rgba(76,19,94,.08)">
-          <div style="font-size:1.8rem; font-weight:900; color:var(--purple-main)">Donataria Autorizada</div>
+      <div>
+        <figure class="about__photo">
+          <img
+            src="https://images.unsplash.com/photo-1676629650907-d50f2f27db20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900"
+            alt="Tres mujeres sentadas juntas mirando el horizonte — comunidad y esperanza"
+            loading="lazy"
+          />
+          <figcaption>Foto: <a href="https://unsplash.com/@melanie_kanzler?utm_source=cam_site&utm_medium=referral" target="_blank" rel="noopener">Melanie Kanzler</a> / Unsplash</figcaption>
+        </figure>
+        <div style="display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.5rem;">
+          <div class="value-chip"><span>🕊️</span> Dignidad y autonomía</div>
+          <div class="value-chip"><span>⚖️</span> Derechos humanos</div>
+          <div class="value-chip"><span>🤝</span> Sin juicios</div>
+          <div class="value-chip"><span>🌿</span> Transformación</div>
+          <div class="value-chip"><span>💜</span> Comunidad</div>
+          <div class="value-chip"><span>🔍</span> Transparencia</div>
+        </div>
+        <div style="margin-top:1.25rem; padding:1.25rem; background:var(--lavender); border-radius:var(--radius-lg); text-align:center;">
+          <div style="font-size:1.4rem; font-weight:900; color:var(--purple-main)">Donataria Autorizada</div>
           <div style="font-size:.9rem; color:var(--text-mid); margin-top:.25rem">Recibos deducibles de impuestos ante el SAT</div>
         </div>
       </div>
@@ -824,10 +917,21 @@
   <!-- ── SÚMATE ──────────────────────────────────────────────────── -->
   <section class="section section--white" id="sumate">
     <div class="container">
-      <div class="section-intro">
-        <span class="badge">Súmate al cambio</span>
-        <h2>Tu apoyo<br/>cambia vidas</h2>
-        <p>La transformación social requiere acción colectiva. Hay muchas formas de ser parte de este cambio.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; margin-bottom:3rem;">
+        <div class="section-intro" style="margin-bottom:0">
+          <span class="badge">Súmate al cambio</span>
+          <h2>Tu apoyo<br/>cambia vidas</h2>
+          <p>La transformación social requiere acción colectiva. Hay muchas formas de ser parte de este cambio.</p>
+        </div>
+        <figure style="border-radius:var(--radius-xl); overflow:hidden; aspect-ratio:4/3; box-shadow:0 16px 40px rgba(76,19,94,.12); position:relative;">
+          <img
+            src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800"
+            alt="Manos de un grupo apiladas juntas — unidad y acción colectiva"
+            loading="lazy"
+            style="width:100%; height:100%; object-fit:cover;"
+          />
+          <figcaption style="position:absolute;bottom:.5rem;right:.75rem;color:rgba(255,255,255,.6);font-size:.65rem;text-shadow:0 1px 3px rgba(0,0,0,.5);">Foto: <a href="https://unsplash.com/@hannahbusing?utm_source=cam_site&utm_medium=referral" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7)">Hannah Busing</a> / Unsplash</figcaption>
+        </figure>
       </div>
 
       <div class="sumate-grid">
