@@ -725,6 +725,67 @@
       pointer-events: none;
     }
 
+    /* ── Accessibility ──────────────────────────────────────────── */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--purple-deep);
+      color: var(--white);
+      padding: .6rem 1.25rem;
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      font-weight: 700;
+      z-index: 9999;
+      transition: top .15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    :focus-visible {
+      outline: 3px solid var(--teal);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .will-animate { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ── Brand deco: curva de trazo libre ────────────────────────── */
+    .deco-curve {
+      display: block;
+      margin-bottom: .4rem;
+    }
+    .section--white .deco-curve path,
+    .section--cream .deco-curve path { stroke: var(--teal); }
+    .section--lavender .deco-curve path { stroke: var(--purple-main); }
+    .section--purple .deco-curve path { stroke: var(--teal); }
+
+    /* ── Brand deco: píldoras hero ───────────────────────────────── */
+    .hero-pills {
+      position: absolute;
+      top: 0; right: 0;
+      width: 340px; height: 260px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .13;
+    }
+
+    /* ── Brand deco: patrón de hojas (impacto) ───────────────────── */
+    .leaf-deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .07;
+      overflow: hidden;
+    }
+
     /* ── Responsive ────────────────────────────────────────────── */
     @media (max-width: 900px) {
       .services-grid  { grid-template-columns: 1fr 1fr; }
@@ -760,6 +821,8 @@
   </style>
 </head>
 <body>
+
+  <a class="skip-link" href="#contenido-principal">Ir al contenido principal</a>
 
   <!-- Fixed urgent button -->
   <div class="urgent-bar">
@@ -813,7 +876,18 @@
   </header>
 
   <!-- ── HERO ───────────────────────────────────────────────────── -->
+  <main id="contenido-principal">
   <section class="hero" id="inicio">
+    <!-- Píldoras decorativas del manual de identidad -->
+    <svg class="hero-pills" viewBox="0 0 340 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="30" y="18" width="180" height="52" rx="26" fill="#DDD6FF"/>
+      <rect x="160" y="100" width="130" height="40" rx="20" fill="#66B5A8" transform="rotate(-12 160 100)"/>
+      <circle cx="28" cy="130" r="28" fill="#DDD6FF"/>
+      <rect x="180" y="175" width="90" height="30" rx="15" fill="#66B5A8"/>
+      <circle cx="110" cy="195" r="18" fill="#DDD6FF"/>
+      <rect x="60" y="78" width="60" height="22" rx="11" fill="#DDD6FF" opacity=".6"/>
+    </svg>
+
     <div class="container hero__inner">
       <div class="hero__content">
         <span class="hero__tag">León, Guanajuato · Desde 1996</span>
@@ -841,6 +915,7 @@
     <div class="container">
       <div class="section-intro">
         <span class="badge">Nuestros servicios</span>
+        <svg class="deco-curve" width="72" height="28" viewBox="0 0 72 28" fill="none" aria-hidden="true"><path d="M4 22 C16 6 28 26 44 14 C54 6 64 20 70 12" stroke-width="2.5" stroke-linecap="round"/></svg>
         <h2>Atención integral,<br/>modelo interdisciplinario</h2>
         <p>Acompañamos a cada mujer con un equipo profesional que integra cinco áreas de atención, diseñadas para acompañar su proceso desde adentro.</p>
       </div>
@@ -885,7 +960,8 @@
     <div class="container">
       <div class="section-intro">
         <span class="badge" style="color:var(--purple-main)">Áreas de atención</span>
-        <h2>Tu proceso,<br/>acompañado</h2>
+        <svg class="deco-curve" width="72" height="28" viewBox="0 0 72 28" fill="none" aria-hidden="true"><path d="M4 22 C16 6 28 26 44 14 C54 6 64 20 70 12" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <h2>Tres áreas.<br/>Un camino.</h2>
         <p style="color:var(--text-mid)">Cada mujer que llega recibe atención personalizada en las áreas que su situación requiere.</p>
       </div>
 
@@ -950,10 +1026,18 @@
   </section>
 
   <!-- ── PROCESO ─────────────────────────────────────────────────── -->
-  <section class="section section--lavender">
+  <section class="section section--white" style="position:relative;overflow:hidden;">
+    <!-- Píldoras decorativas fondo -->
+    <svg style="position:absolute;top:-20px;right:-30px;width:260px;height:220px;opacity:.06;pointer-events:none;" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="20" y="30" width="200" height="58" rx="29" fill="#702F8A"/>
+      <rect x="80" y="120" width="150" height="44" rx="22" fill="#66B5A8" transform="rotate(-8 80 120)"/>
+      <circle cx="24" cy="150" r="32" fill="#DDD6FF"/>
+      <rect x="140" y="175" width="100" height="32" rx="16" fill="#702F8A"/>
+    </svg>
     <div class="container">
       <div class="section-intro">
         <span class="badge" style="color:var(--purple-main)">Cómo funciona</span>
+        <svg class="deco-curve" width="72" height="28" viewBox="0 0 72 28" fill="none" aria-hidden="true"><path d="M4 22 C16 6 28 26 44 14 C54 6 64 20 70 12" stroke-width="2.5" stroke-linecap="round"/></svg>
         <h2>Tu proceso,<br/>a tu ritmo</h2>
         <p style="color:var(--text-mid)">No te decimos qué hacer: te mostramos tus opciones y te acompañamos en cada paso.</p>
       </div>
@@ -984,10 +1068,24 @@
   </section>
 
   <!-- ── IMPACTO ─────────────────────────────────────────────────── -->
-  <section class="section section--purple" id="impacto">
-    <div class="container">
+  <section class="section section--purple" id="impacto" style="position:relative;overflow:hidden;">
+    <!-- Patrón de hojas orgánicas del manual de identidad -->
+    <svg class="leaf-deco" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M40 40 Q20 120 70 200 Q100 120 40 40Z" fill="white"/><line x1="40" y1="40" x2="70" y2="200" stroke="white" stroke-width="1.2"/>
+      <path d="M180 10 Q140 80 160 170 Q195 95 180 10Z" fill="white" transform="rotate(-18,170,90)"/><line x1="180" y1="10" x2="160" y2="170" stroke="white" stroke-width="1.2" transform="rotate(-18,170,90)"/>
+      <path d="M350 350 Q390 280 450 260 Q420 320 350 350Z" fill="white"/><line x1="350" y1="350" x2="450" y2="260" stroke="white" stroke-width="1.2"/>
+      <path d="M520 30 Q560 10 610 40 Q580 80 520 30Z" fill="white"/><line x1="520" y1="30" x2="610" y2="40" stroke="white" stroke-width="1.2"/>
+      <path d="M680 80 Q660 160 690 240 Q720 160 680 80Z" fill="white"/><line x1="680" y1="80" x2="690" y2="240" stroke="white" stroke-width="1.2"/>
+      <path d="M820 200 Q800 280 830 360 Q860 280 820 200Z" fill="white" transform="rotate(10,835,280)"/><line x1="820" y1="200" x2="830" y2="360" stroke="white" stroke-width="1.2" transform="rotate(10,835,280)"/>
+      <path d="M100 320 Q140 290 190 280 Q160 315 100 320Z" fill="white"/><line x1="100" y1="320" x2="190" y2="280" stroke="white" stroke-width="1.2"/>
+      <path d="M440 130 Q470 90 520 100 Q495 135 440 130Z" fill="white"/><line x1="440" y1="130" x2="520" y2="100" stroke="white" stroke-width="1.2"/>
+      <path d="M750 340 Q730 300 760 260 Q785 300 750 340Z" fill="white" transform="rotate(-15,765,300)"/><line x1="750" y1="340" x2="760" y2="260" stroke="white" stroke-width="1.2" transform="rotate(-15,765,300)"/>
+      <path d="M280 60 Q255 120 280 180 Q308 120 280 60Z" fill="white" transform="rotate(25,280,120)"/><line x1="280" y1="60" x2="280" y2="180" stroke="white" stroke-width="1.2" transform="rotate(25,280,120)"/>
+    </svg>
+    <div class="container" style="position:relative;z-index:1;">
       <div class="section-intro">
         <span class="badge" style="color:var(--teal)">Nuestro impacto</span>
+        <svg class="deco-curve" width="72" height="28" viewBox="0 0 72 28" fill="none" aria-hidden="true"><path d="M4 22 C16 6 28 26 44 14 C54 6 64 20 70 12" stroke-width="2.5" stroke-linecap="round"/></svg>
         <h2 style="color:var(--white)">Más de 28 años<br/>transformando vidas</h2>
         <p>Cada número representa una historia, una mujer que encontró su camino hacia una vida libre de violencia.</p>
       </div>
@@ -1033,6 +1131,7 @@
     <div class="container about__inner">
       <div>
         <span class="badge">Quiénes somos</span>
+        <svg class="deco-curve" width="72" height="28" viewBox="0 0 72 28" fill="none" aria-hidden="true"><path d="M4 22 C16 6 28 26 44 14 C54 6 64 20 70 12" stroke-width="2.5" stroke-linecap="round"/></svg>
         <h2>Un refugio seguro.<br/>Una voz aliada.</h2>
         <p style="margin: 1rem 0 1.25rem">Casa de Apoyo a la Mujer A.C. nació en 1996 en León, Guanajuato, como un espacio creado desde la empatía, el compromiso y la búsqueda de justicia transformada en acción.</p>
         <p style="color:var(--text-mid)">Somos sostenidas por profesionistas, voluntarias, pasantes y aliadas que creen en el cambio y trabajan para hacerlo posible. Sabemos que cambiar la historia de una sola mujer cambia también a su familia, su comunidad y la sociedad entera.</p>
@@ -1078,6 +1177,7 @@
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; margin-bottom:3rem;">
         <div class="section-intro" style="margin-bottom:0">
           <span class="badge">Súmate al cambio</span>
+          <svg class="deco-curve" width="72" height="28" viewBox="0 0 72 28" fill="none" aria-hidden="true"><path d="M4 22 C16 6 28 26 44 14 C54 6 64 20 70 12" stroke-width="2.5" stroke-linecap="round"/></svg>
           <h2>Tu apoyo<br/>cambia vidas</h2>
           <p>La transformación social requiere acción colectiva. Hay muchas formas de ser parte de este cambio.</p>
         </div>
@@ -1189,6 +1289,8 @@
 
     </div>
   </section>
+
+  </main><!-- /contenido-principal -->
 
   <!-- ── FOOTER ──────────────────────────────────────────────────── -->
   <footer class="footer">
